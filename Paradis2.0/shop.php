@@ -15,6 +15,22 @@
 		<link href="css/tiny-slider.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<title>Paradis | Shop</title>
+
+        <script>
+            function postData() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "php/services.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Handle the response from the PHP file
+                        console.log(xhr.responseText);
+                    }
+                };
+                var data = "username=myusername&password=mypassword"; // Replace with your data
+                xhr.send(data);
+            }
+        </script>
 	</head>
 
 	<body>
@@ -37,7 +53,6 @@
 							<a class="nav-link" href="index.php">Home</a>
 						</li>
 						<li class="active"><a class="nav-link" href="shop.html">Shop</a></li>
-						<li><a class="nav-link" href="services.php">Services</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -84,7 +99,7 @@
                     // Loop through the items and display them on the page
                     foreach ($inventoryItems as $item) {
                         echo '<div class="col-12 col-md-4 col-lg-3 mb-5">';
-                        echo '<a class="product-item" href="#">';
+                        echo '<a class="product-item" href="services.php?id='.$item->id.'">';
                         echo '<img src="data:image/jpeg;base64,' . base64_encode($item->image) . '" class="img-fluid product-thumbnail" alt="' . $item->name . '">';
                         echo '<h3 class="product-title">' . $item->name . '</h3>';
                         echo '<strong class="product-price">$' . $item->price . '</strong>';

@@ -4,7 +4,10 @@
     include "php/InventoryDataHandler.php";
 
     $conn=connectToDatabase("LocalHost","root","","paradis");
-    $id=3;
+    if(isset($_GET['id']))
+    {
+        $id=$_GET['id'];
+    }
 ?>
 <html lang="en">
 <head>
@@ -45,7 +48,6 @@
 							<a class="nav-link" href="index.php">Home</a>
 						</li>
 						<li><a class="nav-link" href="shop.php">Shop</a></li>
-						<li class="active"><a class="nav-link" href="services.html">Services</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -108,7 +110,7 @@
 								<img src="images/truck.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>Fast &amp; Free Shipping</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+							<p>Aproveite o nosso envio rápido e confiável para uma experiência de compra perfeita.</p>
 						</div>
 					</div>
 
@@ -118,7 +120,7 @@
 								<img src="images/bag.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>Easy to Shop</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+							<p>Experimente a conveniência de fazer compras fáceis com a nossa plataforma de fácil utilização.</p>
 						</div>
 					</div>
 
@@ -128,7 +130,7 @@
 								<img src="images/support.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>24/7 Support</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+							<p>Conte com o nosso apoio ininterrupto para qualquer assistência que necessite, 24 horas por dia, 7 dias por semana.</p>
 						</div>
 					</div>
 
@@ -138,7 +140,7 @@
 								<img src="images/return.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>Hassle Free Returns</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+							<p>Desfrute de devoluções sem complicações para uma experiência de compra sem preocupações.</p>
 						</div>
 					</div>
 
@@ -169,7 +171,7 @@
                     foreach ($RandInventoryItems as $RItem)
                     {
                         echo '<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">';
-                        echo '<a class="product-item" href="#">';
+                        echo '<a class="product-item" href="services.php?id='.$RItem->id.'">';
                         echo '<img src="data:image/jpeg;base64,' . base64_encode($RItem->image) . '" class="img-fluid product-thumbnail">';
                         echo '<h3 class="product-title">'.$RItem->name.'</h3>';
                         echo '<strong class="product-price">'.$RItem->price.'€</strong>';

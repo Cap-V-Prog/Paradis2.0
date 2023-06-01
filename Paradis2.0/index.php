@@ -43,7 +43,6 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 							<a class="nav-link" href="index.html">Home</a>
 						</li>
 						<li><a class="nav-link" href="shop.php">Shop</a></li>
-						<li><a class="nav-link" href="services.php">Services</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -96,7 +95,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
                     foreach ($RandInventoryItems as $RItem)
                     {
                         echo '<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">';
-                        echo '<a class="product-item" href="#">';
+                        echo '<a class="product-item" href="services.php?id='.$RItem->id.'">';
                         echo '<img src="data:image/jpeg;base64,' . base64_encode($RItem->image) . '" class="img-fluid product-thumbnail">';
                         echo '<h3 class="product-title">'.$RItem->name.'</h3>';
                         echo '<strong class="product-price">'.$RItem->price.'€</strong>';
@@ -128,7 +127,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 										<img src="images/truck.svg" alt="Image" class="imf-fluid">
 									</div>
 									<h3>Fast &amp; Free Shipping</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<p>Aproveite o nosso envio rápido e confiável para uma experiência de compra perfeita.</p>
 								</div>
 							</div>
 
@@ -138,7 +137,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 										<img src="images/bag.svg" alt="Image" class="imf-fluid">
 									</div>
 									<h3>Easy to Shop</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<p>Experimente a conveniência de fazer compras fáceis com a nossa plataforma de fácil utilização.</p>
 								</div>
 							</div>
 
@@ -148,7 +147,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 										<img src="images/support.svg" alt="Image" class="imf-fluid">
 									</div>
 									<h3>24/7 Support</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<p>Conte com o nosso apoio ininterrupto para qualquer assistência que necessite, 24 horas por dia, 7 dias por semana.</p>
 								</div>
 							</div>
 
@@ -158,7 +157,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 										<img src="images/return.svg" alt="Image" class="imf-fluid">
 									</div>
 									<h3>Hassle Free Returns</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<p>Desfrute de devoluções sem complicações para uma experiência de compra sem preocupações.</p>
 								</div>
 							</div>
 
@@ -167,7 +166,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 
 					<div class="col-lg-5">
 						<div class="img-wrap">
-							<img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
+							<img src="images/TELLMeWHY.png" alt="Image" class="img-fluid">
 						</div>
 					</div>
 
@@ -194,9 +193,9 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 						<div class="post-entry">
 							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
 							<div class="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
+								<h3><a href="#">First Time touching women</a></h3>
 								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+									<span>by <a href="#">Diogo Bigodes</a></span> <span>on <a href="#">May 13, 2023</a></span>
 								</div>
 							</div>
 						</div>
