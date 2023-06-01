@@ -1,10 +1,9 @@
 <!doctype html>
 <?php
-    include "php/BDconection.php";
-    include "php/InventoryDataHandler.php";
+include "php/BDconection.php";
+include "php/InventoryDataHandler.php";
 
-    $conn=connectToDatabase("LocalHost","root","","paradis");
-    $id=3;
+$conn=connectToDatabase("LocalHost","root","","paradis");
 ?>
 <html lang="en">
 <head>
@@ -21,8 +20,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="css/tiny-slider.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
-		<title>Paradis | <?php $itemData = searchInventoryItem($conn, $id);
-                           if ($itemData !== null) echo $itemData->name;?></title>
+		<title>Paradis | Home</title>
 	</head>
 
 	<body>
@@ -31,9 +29,9 @@
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 			<div class="container">
-                <a class="navbar-brand" href="index.php">
-                    <img src="images/logoCMYK.png" alt="Paradis Logo">
-                </a>
+				<a class="navbar-brand" href="index.html">
+					<img src="images/logoCMYK.png" alt="Paradis Logo">
+				</a>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -41,11 +39,11 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="nav-item">
-							<a class="nav-link" href="index.php">Home</a>
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html">Home</a>
 						</li>
 						<li><a class="nav-link" href="shop.php">Shop</a></li>
-						<li class="active"><a class="nav-link" href="services.html">Services</a></li>
+						<li><a class="nav-link" href="services.php">Services</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -64,29 +62,14 @@
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
-                                <?php
-                                    if ($itemData !== null) {
-                                        echo "<h1>" . $itemData->name . "</h1>";
-                                    }
-                                ?>
-								<p class="mb-4"><?php echo($itemData->desc);?></p>
-                                    <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                                        <div class="input-group-prepend">
-                                            <button style="padding: .375rem .75rem; padding-left: .0rem; background:none; border: none" class="btn btn-outline-black decrease" type="button">−</button>
-                                        </div>
-                                        <input style="border: none;border-radius: 25px;padding: 20px 10px" type="number" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="HI!" aria-describedby="button-addon1">
-                                        <div class="input-group-append">
-                                            <button style="padding: .375rem .75rem;padding-right: .0rem; background:none; border: none" class="btn btn-outline-black increase" type="button">+</button>
-                                        </div>
-                                    </div>
-								<p><a href="" class="btn btn-secondary me-2">Adicionar ao carrinho</a><a href="#" class="btn btn-white-outline"><?php echo($itemData->price."€"); ?></a></p>
+								<h1>BEM VINDO A PARADIS <span clsas="d-block"></span></h1>
+								<p class="mb-4">Bem-vindo a Paradis, o destino definitivo para os fãs de anime! Neste site de venda exclusivo, mergulhe num mundo vibrante e emocionante, onde a sua paixão pelo anime é celebrada e atendida com uma variedade exuberante de produtos relacionados.</p>
+								<p><a href="" class="btn btn-secondary me-2">Registar</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
 							<div class="hero-img-wrap">
-                                <?php
-                                echo('<img src="data:image/jpeg;base64,' . base64_encode($itemData->image) . '"class="img-fluid">');
-                                ?>
+								<img src="images/couch2.png" class="img-fluid">
 							</div>
 						</div>
 					</div>
@@ -94,72 +77,16 @@
 			</div>
 		<!-- End Hero Section -->
 
-		
-
-		<!-- Start Why Choose Us Section -->
-		<div class="why-choose-section">
-			<div class="container">
-				
-				
-				<div class="row my-5">
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/truck.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Fast &amp; Free Shipping</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-						</div>
-					</div>
-
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/bag.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Easy to Shop</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-						</div>
-					</div>
-
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/support.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>24/7 Support</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-						</div>
-					</div>
-
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/return.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Hassle Free Returns</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-						</div>
-					</div>
-
-
-
-				</div>
-			
-			</div>
-		</div>
-		<!-- End Why Choose Us Section -->
-
 		<!-- Start Product Section -->
-		<div class="product-section pt-0">
+		<div class="product-section">
 			<div class="container">
 				<div class="row">
 
 					<!-- Start Column 1 -->
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
 						<h2 class="mb-4 section-title">Descubra mais ofertas incríveis, disponíveis agora! Não perca tempo!</h2>
-						<p class="mb-4">Aproveite enquanto o estoque dura!</p>
-						<p><a href="#" class="btn">Ver mais</a></p>
+						<p class="mb-4">Aproveite enquanto o estoque dura! </p>
+						<p><a href="shop.php" class="btn">Ver mais</a></p>
 					</div> 
 					<!-- End Column 1 -->
 
@@ -185,6 +112,124 @@
 			</div>
 		</div>
 		<!-- End Product Section -->
+
+		<!-- Start Why Choose Us Section -->
+		<div class="why-choose-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-6">
+						<h2 class="section-title">Por que escolher-nos</h2>
+						<p>Somos uma empresa comprometida com a excelência em todos os aspetos do nosso trabalho, e isso se reflete nos nossos produtos/serviços de alta qualidade e na nossa abordagem centrada no cliente.</p>
+
+						<div class="row my-5">
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/truck.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Fast &amp; Free Shipping</h3>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/bag.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Easy to Shop</h3>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/support.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>24/7 Support</h3>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/return.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Hassle Free Returns</h3>
+									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-5">
+						<div class="img-wrap">
+							<img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- End Why Choose Us Section -->
+
+		<!-- Start Blog Section -->
+		<div class="blog-section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-6">
+						<h2 class="section-title">Recent Blog</h2>
+					</div>
+					<div class="col-md-6 text-start text-md-end">
+						<a href="#" class="more">View All Posts</a>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">First Time Home Owner Ideas</a></h3>
+								<div class="meta">
+									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
+								<div class="meta">
+									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
+								<div class="meta">
+									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- End Blog Section -->	
 
 		<!-- Start Footer Section -->
 		<footer class="footer-section">
@@ -224,7 +269,7 @@
 
 						<ul class="list-unstyled custom-social">
 							<li><a href="https://www.instagram.com/mario_v.s_04/"><span class="fa fa-brands fa-instagram"></span></a></li>
-                            <li><a href="https://github.com/Cap-V-Prog"><span class="fa fa-brands fa-github"></span></a></li>
+							<li><a href="https://github.com/Cap-V-Prog"><span class="fa fa-brands fa-github"></span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -247,7 +292,7 @@
 
 			</div>
 		</footer>
-		<!-- End Footer Section -->	
+		<!-- End Footer Section -->
 
 
 		<script src="js/bootstrap.bundle.min.js"></script>
