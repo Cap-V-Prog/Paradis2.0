@@ -1,15 +1,22 @@
 <?php
+include 'BDconection.php';
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    include 'UsersDataHandler.php';
+    session_start();
+    $servername = "LocalHost";
+    $username = "root";
+    $password = "";
+    $dbname = "paradis";
+
+    $conn = connectToDatabase($servername, $username, $password, $dbname);
+    $user = $_SESSION['user'];
+    addToCart($user->id,$_GET['id'],$_GET['quant'],$conn);
+    header("Refresh: 0; ../cart.html");
+}
 function addToCart($U_ID, $I_ID, $Quant, $conn) {
     try {
-        // Check if the user exists
-        $userQuery = $conn->prepare("SELECT * FROM users WHERE U_ID = :U_ID");
-        $userQuery->bindParam(":U_ID", $U_ID);
-        $userQuery->execute();
-
-        if ($userQuery->rowCount() == 0) {
-            // User does not exist
-            return "Invalid user ID";
-        }
+        // Start a transaction
+        $conn->beginTransaction();
 
         // Check if the item exists
         $itemQuery = $conn->prepare("SELECT * FROM inventory WHERE I_ID = :I_ID");
@@ -21,15 +28,27 @@ function addToCart($U_ID, $I_ID, $Quant, $conn) {
             return "Invalid item ID";
         }
 
-        // Start a transaction
-        $conn->beginTransaction();
+        // Check if the user already has the item in the cart
+        $cartQuery = $conn->prepare("SELECT * FROM cart WHERE U_ID = :U_ID AND I_ID = :I_ID");
+        $cartQuery->bindParam(":U_ID", $U_ID);
+        $cartQuery->bindParam(":I_ID", $I_ID);
+        $cartQuery->execute();
 
-        // Insert into the cart table
-        $insertQuery = $conn->prepare("INSERT INTO cart (U_ID, I_ID, Quant) VALUES (:U_ID, :I_ID, :Quant)");
-        $insertQuery->bindParam(":U_ID", $U_ID);
-        $insertQuery->bindParam(":I_ID", $I_ID);
-        $insertQuery->bindParam(":Quant", $Quant);
-        $insertQuery->execute();
+        if ($cartQuery->rowCount() > 0) {
+            // User already has the item in the cart, update the quantity
+            $updateQuery = $conn->prepare("UPDATE cart SET Quant = :Quant WHERE U_ID = :U_ID AND I_ID = :I_ID");
+            $updateQuery->bindParam(":Quant", $Quant);
+            $updateQuery->bindParam(":U_ID", $U_ID);
+            $updateQuery->bindParam(":I_ID", $I_ID);
+            $updateQuery->execute();
+        } else {
+            // User does not have the item in the cart, insert a new row
+            $insertQuery = $conn->prepare("INSERT INTO cart (U_ID, I_ID, Quant) VALUES (:U_ID, :I_ID, :Quant)");
+            $insertQuery->bindParam(":U_ID", $U_ID);
+            $insertQuery->bindParam(":I_ID", $I_ID);
+            $insertQuery->bindParam(":Quant", $Quant);
+            $insertQuery->execute();
+        }
 
         // Commit the transaction
         $conn->commit();
@@ -43,5 +62,6 @@ function addToCart($U_ID, $I_ID, $Quant, $conn) {
         return "Error: " . $e->getMessage();
     }
 }
+
 
 

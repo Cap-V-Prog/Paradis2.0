@@ -16,7 +16,7 @@ body{
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #5bb800;
+  background-color: #1B512D;
 }
 ::selection{
   color: #fff;
@@ -99,7 +99,7 @@ form .page .field button{
 }
 
 .container .form-outer form .page .field .submitb:hover {
-  background: #5bb800;
+  background: #1B512D;
 }
 
 select{
@@ -107,7 +107,7 @@ select{
 }
 
 form .page .field button:hover{
-  background: #5bb800;
+  background: #1B512D;
 }
 form .page .btns button{
   margin-top: -20px!important;
@@ -132,13 +132,13 @@ form .page .btns button.next{
 .container .progress-bar .step p{
   font-weight: 500;
   font-size: 18px;
-  color: #5bb800;
+  color: #1B512D;
   margin-bottom: 8px;
 }
 .progress-bar .step .bullet{
   height: 25px;
   width: 25px;
-  border: 2px solid #5bb800;
+  border: 2px solid #1B512D;
   display: inline-block;
   border-radius: 50%;
   position: relative;
@@ -167,7 +167,7 @@ form .page .btns button.next{
   right: -51px;
   height: 3px;
   width: 44px;
-  background: #5bb800;
+  background: #1B512D;
 }
 .progress-bar .step .bullet.active:after{
   background: #255C99;

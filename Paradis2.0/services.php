@@ -26,6 +26,20 @@
 		<link href="css/style.css" rel="stylesheet">
 		<title>Paradis | <?php $itemData = searchInventoryItem($conn, $id);
                            if ($itemData !== null) echo $itemData->name;?></title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var addButton = document.getElementById("add");
+                addButton.addEventListener("click", function(event) {
+                    event.preventDefault(); // Prevent the default button behavior
+
+                    var id = "<?php echo $id; ?>"; // Use the PHP variable value
+                    var quant = document.getElementById("quant").value; // Value from the input field
+
+                    // Navigate to the URL
+                    window.location.href = "php/CartDataHandler.php?id=" + id + "&quant=" + quant;
+                });
+            });
+        </script>
 	</head>
 
 	<body>
@@ -51,7 +65,7 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+						<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>
 						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
@@ -73,16 +87,17 @@
                                 ?>
 								<p class="mb-4"><?php echo($itemData->desc);?></p>
                                     <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+
                                         <div class="input-group-prepend">
                                             <button style="padding: .375rem .75rem; padding-left: .0rem; background:none; border: none" class="btn btn-outline-black decrease" type="button">−</button>
                                         </div>
-                                        <input style="border: none;border-radius: 25px;padding: 20px 10px" type="number" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="HI!" aria-describedby="button-addon1">
+                                        <input style="border: none;border-radius: 25px;padding: 20px 10px" id="quant" type="number" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="HI!" aria-describedby="button-addon1">
                                         <div class="input-group-append">
                                             <button style="padding: .375rem .75rem;padding-right: .0rem; background:none; border: none" class="btn btn-outline-black increase" type="button">+</button>
                                         </div>
                                     </div>
-								<p><a href="" class="btn btn-secondary me-2">Adicionar ao carrinho</a><a href="#" class="btn btn-white-outline"><?php echo($itemData->price."€"); ?></a></p>
-							</div>
+								<p><a id="add" class="btn btn-secondary me-2">Adicionar ao carrinho</a><a href="#" class="btn btn-white-outline"><?php echo($itemData->price."€"); ?></a></p>
+                            </div>
 						</div>
 						<div class="col-lg-7">
 							<div class="hero-img-wrap">

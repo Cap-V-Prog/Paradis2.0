@@ -46,7 +46,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+						<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>
 						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
@@ -63,7 +63,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 							<div class="intro-excerpt">
 								<h1>BEM VINDO A PARADIS <span clsas="d-block"></span></h1>
 								<p class="mb-4">Bem-vindo a Paradis, o destino definitivo para os fãs de anime! Neste site de venda exclusivo, mergulhe num mundo vibrante e emocionante, onde a sua paixão pelo anime é celebrada e atendida com uma variedade exuberante de produtos relacionados.</p>
-								<p><a href="" class="btn btn-secondary me-2">Registar</a></p>
+								<p><a href="../SignIn" class="btn btn-secondary me-2">Registar</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -193,7 +193,7 @@ $conn=connectToDatabase("LocalHost","root","","paradis");
 						<div class="post-entry">
 							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
 							<div class="post-content-entry">
-								<h3><a href="#">First Time touching women</a></h3>
+								<h3><a href="#">First Time beeing touched by women</a></h3>
 								<div class="meta">
 									<span>by <a href="#">Diogo Bigodes</a></span> <span>on <a href="#">May 13, 2023</a></span>
 								</div>
