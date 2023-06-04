@@ -52,12 +52,12 @@
 						<li class="nav-item ">
 							<a class="nav-link" href="index.php">Home</a>
 						</li>
-						<li class="active"><a class="nav-link" href="shop.html">Shop</a></li>
+						<li class="active"><a class="nav-link" href="shop.php">Shop</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
 			</div>
