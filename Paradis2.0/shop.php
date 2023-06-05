@@ -16,21 +16,6 @@
 		<link href="css/style.css" rel="stylesheet">
 		<title>Paradis | Shop</title>
 
-        <script>
-            function postData() {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "php/services.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Handle the response from the PHP file
-                        console.log(xhr.responseText);
-                    }
-                };
-                var data = "username=myusername&password=mypassword"; // Replace with your data
-                xhr.send(data);
-            }
-        </script>
 	</head>
 
 	<body>
