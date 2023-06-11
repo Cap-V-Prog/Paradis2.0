@@ -1,4 +1,11 @@
 <!doctype html>
+<?php
+include "php/BDconection.php";
+include "php/InventoryDataHandler.php";
+
+$conn=connectToDatabase("LocalHost","root","","paradis");
+session_start();
+?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -41,7 +48,9 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>
+                        <?php if(!isset($_SESSION['user'])){
+                            echo '<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>';
+                        }else{echo '<li><a class="nav-link" href="../Profile"><img src="images/user.svg"></a></li>';}?>
 						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
@@ -75,10 +84,6 @@
 
 		      		<!-- Start Column 1 -->
                     <?php
-                    include "php/BDconection.php";
-                    include "php/InventoryDataHandler.php";
-
-                    $conn=connectToDatabase("LocalHost","root","","paradis");
                     $inventoryItems = listItemTable($conn);
 
                     // Loop through the items and display them on the page

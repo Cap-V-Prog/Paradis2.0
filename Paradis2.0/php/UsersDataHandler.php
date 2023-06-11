@@ -94,6 +94,32 @@ function addUser($conn, $name, $age, $email, $address, $telephone, $password, $n
     }
 }
 
+function searchUserById($conn, $userId)
+{
+    $sql = "SELECT * FROM users WHERE U_ID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$userId]);
+
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user = new UsersData(
+            $row['U_ID'],
+            $row['Nome'],
+            $row['Birthday'],
+            $row['Email'],
+            $row['Address'],
+            $row['Tell'],
+            $row['Password'],
+            $row['NIF'],
+            $row['Gender']
+        );
+        return $user;
+    } else {
+        echo "No user found with the ID: $userId";
+        return null;
+    }
+}
+
 function searchUserByEmail($conn, $email)
 {
     $sql = "SELECT * FROM users WHERE Email = ?";

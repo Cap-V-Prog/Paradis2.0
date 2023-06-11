@@ -4,6 +4,7 @@
     include "php/InventoryDataHandler.php";
 
     $conn=connectToDatabase("LocalHost","root","","paradis");
+    session_start();
     if(isset($_GET['id']))
     {
         $id=$_GET['id'];
@@ -65,7 +66,9 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>
+                        <?php if(!isset($_SESSION['user'])){
+                            echo '<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>';
+                        }else{echo '<li><a class="nav-link" href="../Profile"><img src="images/user.svg"></a></li>';}?>
 						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>

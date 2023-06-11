@@ -52,7 +52,9 @@ if(!isset($_SESSION['user'])){
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>
+                        <?php if(!isset($_SESSION['user'])){
+                            echo '<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>';
+                        }else{echo '<li><a class="nav-link" href="../Profile"><img src="images/user.svg"></a></li>';}?>
 						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
@@ -88,12 +90,12 @@ if(!isset($_SESSION['user'])){
                     <table class="table">
                       <thead>
                         <tr>
-                          <th class="product-thumbnail">Image</th>
-                          <th class="product-name">Product</th>
-                          <th class="product-price">Price</th>
-                          <th class="product-quantity">Quantity</th>
+                          <th class="product-thumbnail">Imagem</th>
+                          <th class="product-name">Produto</th>
+                          <th class="product-price">Preço</th>
+                          <th class="product-quantity">Quantidade</th>
                           <th class="product-total">Total</th>
-                          <th class="product-remove">Remove</th>
+                          <th class="product-remove">Remover</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -153,31 +155,20 @@ if(!isset($_SESSION['user'])){
                 <div class="col-md-6">
                   <div class="row mb-5">
                     <div class="col-md-6 mb-3 mb-md-0">
-                      <button class="btn btn-black btn-sm btn-block">Update Cart</button>
+                      <button class="btn btn-black btn-sm btn-block">Atualizar o carrinho</button>
                     </div>
                     <div class="col-md-6">
-                      <button onclick="window.location='shop.php'" class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
+                      <button onclick="window.location='shop.php'" class="btn btn-outline-black btn-sm btn-block">Continuar a comprar</button>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label class="text-black h4" for="coupon">Coupon</label>
-                      <p>Enter your coupon code if you have one.</p>
-                    </div>
-                    <div class="col-md-8 mb-3 mb-md-0">
-                      <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-black">Apply Coupon</button>
-                    </div>
-                  </div>
+
                 </div>
                 <div class="col-md-6 pl-5">
                   <div class="row justify-content-end">
                     <div class="col-md-7">
                       <div class="row">
                         <div class="col-md-12 text-right border-bottom mb-5">
-                          <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                          <h3 class="text-black h4 text-uppercase">Total do carrinho</h3>
                         </div>
                       </div>
                       <div class="row mb-3">

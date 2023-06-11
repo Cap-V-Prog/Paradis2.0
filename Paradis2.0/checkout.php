@@ -52,7 +52,9 @@ if(!isset($_SESSION['user'])){
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>
+                        <?php if(!isset($_SESSION['user'])){
+                            echo '<li><a class="nav-link" href="../Login"><img src="images/user.svg"></a></li>';
+                        }else{echo '<li><a class="nav-link" href="../Profile"><img src="images/user.svg"></a></li>';}?>
 						<li><a class="nav-link" href="cart.php"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
@@ -82,12 +84,12 @@ if(!isset($_SESSION['user'])){
 		    <div class="container">
 		      <div class="row">
 		        <div class="col-md-6 mb-5 mb-md-0">
-		          <h2 class="h3 mb-3 text-black">Billing Details</h2>
+		          <h2 class="h3 mb-3 text-black">Detalhes de faturação</h2>
 		          <div class="p-3 p-lg-5 border bg-white">
 		            <div class="form-group">
-		              <label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
+		              <label for="c_country" class="text-black">País <span class="text-danger">*</span></label>
 		              <select id="c_country" class="form-control">
-						  <option value="1">Select a country</option>
+						  <option value="1">Selecione um País</option>
 						  <option value="2">bangladesh</option>
 						  <option value="3">Algeria</option>
 						  <option value="4">Afghanistan</option>
@@ -102,57 +104,57 @@ if(!isset($_SESSION['user'])){
 		            </div>
 		            <div class="form-group row">
 		              <div class="col-md-6">
-		                <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
+		                <label for="c_fname" class="text-black">Primeiro nome <span class="text-danger">*</span></label>
 		                <input type="text" class="form-control" id="c_fname" name="c_fname">
 		              </div>
 		              <div class="col-md-6">
-		                <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
+		                <label for="c_lname" class="text-black">Apelido <span class="text-danger">*</span></label>
 		                <input type="text" class="form-control" id="c_lname" name="c_lname">
 		              </div>
 		            </div>
 
 		            <div class="form-group row">
 		              <div class="col-md-12">
-		                <label for="c_companyname" class="text-black">Company Name </label>
+		                <label for="c_companyname" class="text-black">Nome da empresa </label>
 		                <input type="text" class="form-control" id="c_companyname" name="c_companyname">
 		              </div>
 		            </div>
 
 		            <div class="form-group row">
 		              <div class="col-md-12">
-		                <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
-		                <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Street address">
+		                <label for="c_address" class="text-black">Morada <span class="text-danger">*</span></label>
+		                <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Rua das Couves ...">
 		              </div>
 		            </div>
 
 		            <div class="form-group mt-3">
-		              <input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
+		              <input type="text" class="form-control" placeholder="Apartamento, suite, unidade etc. (opcional)">
 		            </div>
 
 		            <div class="form-group row">
 		              <div class="col-md-6">
-		                <label for="c_state_country" class="text-black">State / Country <span class="text-danger">*</span></label>
+		                <label for="c_state_country" class="text-black">Estado / Província <span class="text-danger">*</span></label>
 		                <input type="text" class="form-control" id="c_state_country" name="c_state_country">
 		              </div>
 		              <div class="col-md-6">
-		                <label for="c_postal_zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
+		                <label for="c_postal_zip" class="text-black">Código Postal <span class="text-danger">*</span></label>
 		                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
 		              </div>
 		            </div>
 
 		            <div class="form-group row mb-5">
 		              <div class="col-md-6">
-		                <label for="c_email_address" class="text-black">Email Address <span class="text-danger">*</span></label>
+		                <label for="c_email_address" class="text-black">Email <span class="text-danger">*</span></label>
 		                <input type="text" class="form-control" id="c_email_address" name="c_email_address">
 		              </div>
 		              <div class="col-md-6">
-		                <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-		                <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Phone Number">
+		                <label for="c_phone" class="text-black">Telemóvel <span class="text-danger">*</span></label>
+		                <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="9********">
 		              </div>
 		            </div>
 
 		            <div class="form-group">
-		              <label for="c_order_notes" class="text-black">Order Notes</label>
+		              <label for="c_order_notes" class="text-black">Notas</label>
 		              <textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Write your notes here..."></textarea>
 		            </div>
 
@@ -162,14 +164,14 @@ if(!isset($_SESSION['user'])){
 
 		          <div class="row mb-5">
 		            <div class="col-md-12">
-		              <h2 class="h3 mb-3 text-black">Coupon Code</h2>
+		              <h2 class="h3 mb-3 text-black">Código de desconto</h2>
 		              <div class="p-3 p-lg-5 border bg-white">
 
-		                <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
+		                <label for="c_code" class="text-black mb-3">Código de desconto</label>
 		                <div class="input-group w-75 couponcode-wrap">
-		                  <input type="text" class="form-control me-2" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
+		                  <input type="text" class="form-control me-2" id="c_code" placeholder="Código de desconto" aria-label="Coupon Code" aria-describedby="button-addon2">
 		                  <div class="input-group-append">
-		                    <button class="btn btn-black btn-sm" type="button" id="button-addon2">Apply</button>
+		                    <button class="btn btn-black btn-sm" type="button" id="button-addon2">Aplicar</button>
 		                  </div>
 		                </div>
 
@@ -179,11 +181,11 @@ if(!isset($_SESSION['user'])){
 
 		          <div class="row mb-5">
 		            <div class="col-md-12">
-		              <h2 class="h3 mb-3 text-black">Your Order</h2>
+		              <h2 class="h3 mb-3 text-black">Sua encomentda</h2>
 		              <div class="p-3 p-lg-5 border bg-white">
 		                <table class="table site-block-order-table mb-5">
 		                  <thead>
-		                    <th>Product</th>
+		                    <th>Produto</th>
 		                    <th>Total</th>
 		                  </thead>
 		                  <tbody>
@@ -215,7 +217,7 @@ if(!isset($_SESSION['user'])){
 
                             ?>
 		                    <tr>
-		                      <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
+		                      <td class="text-black font-weight-bold"><strong>Subtotal</strong></td>
 		                      <td class="text-black"><?php echo $subtotal.'€';?></td>
 		                    </tr>
                             <tr>
@@ -250,7 +252,9 @@ if(!isset($_SESSION['user'])){
 		                </div>
 
 		                <div class="border p-3 mb-5">
-		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
+		                  <h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paypal" viewBox="0 0 16 16">
+                                      <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.351.351 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91.379-.27.712-.603.993-1.005a4.942 4.942 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.687 2.687 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.695.695 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016c.217.124.4.27.548.438.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.873.873 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.352.352 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32.845-5.214Z"/>
+                                  </svg>Paypal</a></h3>
 
 		                  <div class="collapse" id="collapsepaypal">
 		                    <div class="py-2">
@@ -260,7 +264,7 @@ if(!isset($_SESSION['user'])){
 		                </div>
 
 		                <div class="form-group">
-		                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='php/CheckOut.php'">Place Order</button>
+		                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='php/CheckOut.php'">Fazer o pedido</button>
 		                </div>
 
 		              </div>
