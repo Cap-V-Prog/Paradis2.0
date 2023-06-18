@@ -4,13 +4,14 @@ if (isset($_GET['id']) && isset($_GET['quant'])) {
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         include 'BDconection.php';
         include 'UsersDataHandler.php';
-        session_start();
+
         $servername = "LocalHost";
         $username = "root";
         $password = "";
         $dbname = "paradis";
 
         $conn = connectToDatabase($servername, $username, $password, $dbname);
+        session_start();
         $user = $_SESSION['user'];
         addToCart($user->id, $_GET['id'], $_GET['quant'], $conn);
         header("Refresh: 0; ../cart.php");

@@ -27,6 +27,8 @@ if(!isset($_SESSION['user'])){
 		<link href="css/tiny-slider.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<title>Paradis | Cart</title>
+
+
 	</head>
 
 	<body>
@@ -85,7 +87,7 @@ if(!isset($_SESSION['user'])){
 		<div class="untree_co-section before-footer-section">
             <div class="container">
               <div class="row mb-5">
-                <form class="col-md-12" method="post">
+                <form id="form-container" class="col-md-12" action="php/updateCart.php" method="post">
                   <div class="site-blocks-table">
                     <table class="table">
                       <thead>
@@ -126,7 +128,7 @@ if(!isset($_SESSION['user'])){
                                   echo '      <div class="input-group-prepend">';
                                   echo '        <button class="btn btn-outline-black decrease" type="button">&minus;</button>';
                                   echo '      </div>';
-                                  echo '      <input type="text" class="form-control text-center quantity-amount" value="' . $cartItem['Quant'] . '" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">';
+                                  echo '      <input type="text" class="form-control text-center quantity-amount" name="products_' . $cartItem['I_ID'] . '" value="' . $cartItem['Quant'] . '" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">';
                                   echo '      <div class="input-group-append">';
                                   echo '        <button class="btn btn-outline-black increase" type="button">&plus;</button>';
                                   echo '      </div>';
@@ -155,12 +157,18 @@ if(!isset($_SESSION['user'])){
                 <div class="col-md-6">
                   <div class="row mb-5">
                     <div class="col-md-6 mb-3 mb-md-0">
-                      <button class="btn btn-black btn-sm btn-block">Atualizar o carrinho</button>
+                      <button id="submit-btn" class="btn btn-black btn-sm btn-block">Atualizar o carrinho</button>
                     </div>
                     <div class="col-md-6">
                       <button onclick="window.location='shop.php'" class="btn btn-outline-black btn-sm btn-block">Continuar a comprar</button>
                     </div>
                   </div>
+
+                    <script>
+                        document.getElementById('submit-btn').addEventListener('click', function() {
+                            document.getElementById('form-container').submit();
+                        });
+                    </script>
 
                 </div>
                 <div class="col-md-6 pl-5">

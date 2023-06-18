@@ -124,7 +124,7 @@ $user=$_SESSION['user'];
                 <!-- Detalhes das redes sociais -->
                 <div class="row mb-5 gx-5">
                     <!-- Alterar senha -->
-                    <div class="col-xxl-6">
+                    <div class="col-xxl-12">
                         <div class="bg-secondary-soft px-4 py-5 rounded">
                             <div class="row g-3">
                                 <h4 class="my-4">Alterar senha</h4>
