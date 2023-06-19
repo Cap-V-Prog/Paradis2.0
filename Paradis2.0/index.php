@@ -209,9 +209,9 @@ session_start();
 						<div class="post-entry">
 							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
 							<div class="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
+								<h3><a href="#">Smile!</a></h3>
 								<div class="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
+									<span>by <a href="#">Diogo Bigodes</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
 								</div>
 							</div>
 						</div>
@@ -221,9 +221,9 @@ session_start();
 						<div class="post-entry">
 							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
 							<div class="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
+								<h3><a href="#">First time reading the passenger handbook</a></h3>
 								<div class="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
+									<span>by <a href="#">Diogo Bigodes</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
 								</div>
 							</div>
 						</div>
