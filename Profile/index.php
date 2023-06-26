@@ -147,15 +147,71 @@ $user=$_SESSION['user'];
                         </div>
                     </div>
                 </div> <!-- Fim da linha -->
+
+                <div class="row mb-5 gx-5">
+                    <div class="col-xxl-12">
+                        <div class="bg-secondary-soft px-4 py-5 rounded">
+                            <h4 class="my-4">Compras</h4>
+                        <?php
+
+                        // Retrieve the user ID from the session
+                        $userID = $_SESSION['user']->id;
+
+                        // Prepare and execute the query to retrieve the user's purchase details
+                        $query = "SELECT s.S_ID, COUNT(i.I_ID) AS TotalItems, s.date, s.PaymentMethod
+          FROM sells s
+          LEFT JOIN itemsells i ON s.S_ID = i.S_ID
+          WHERE s.U_ID = :userID
+          GROUP BY s.S_ID, s.date, s.PaymentMethod";
+                        $stmt = $conn->prepare($query);
+                        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+                        $stmt->execute();
+
+                        // Fetch the data and check if there are any rows returned
+                        echo "<table>";
+                        echo "<thead>";
+                        echo "<tr>";
+                        echo "<th>ID de compra</th>";
+                        echo "<th>Numero de itens</th>";
+                        echo "<th>Data</th>";
+                        echo "<th>Metedo de pagamento</th>";
+                        echo "</tr>";
+                        echo "</thead>";
+                        echo "<tbody>";
+                        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        if (!empty($rows)) {
+                            foreach ($rows as $row) {
+                                echo "<tr>";
+                                echo "<td>" . $row['S_ID'] . "</td>";
+                                echo "<td>" . $row['TotalItems'] . "</td>";
+                                echo "<td>" . $row['date'] . "</td>";
+                                echo "<td>" . $row['PaymentMethod'] . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<td colspan='4' class='no-border'>Nenhuma compra registrada.</td>";
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                        ?>
+                        </tbody>
+                    </table>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- botão -->
                 <div class="gap-3 d-md-flex justify-content-md-end text-center">
-                    <button type="button" class="btn btn-danger btn-lg">Excluir perfil</button>
+                    <button type="button" class="btn btn-danger-soft btn-lg">Excluir perfil</button>
                     <button type="submit" class="btn btn-primary btn-lg">Atualizar perfil</button>
                 </div>
+            </form>
+            <br>
                 <div class="gap-3 d-md-flex justify-content-md-end text-center">
-                    <P></P>
+                    <button class="btn btn-warnings btn-lg" onclick="location.href='../Paradis2.0/php/logout.php'">Logout</button>
                 </div>
-            </form> <!-- Fim do formulário -->
+            <br>
+             <!-- Fim do formulário -->
 
         </div>
     </div>
